@@ -1,0 +1,84 @@
+/* Tablet */
+@media (max-width: 1000px) {
+  .hero__title { grid-column: 1 / 13; }
+  .hero__lede { grid-column: 1 / 9; margin-top: 1.5rem; }
+  .card:nth-child(n) { grid-column: 1 / 13; --ar: 4 / 3; margin-top: 0; align-self: auto; }
+  .card:nth-child(4n + 2), .card:nth-child(4n + 3) { grid-column: 3 / 13; --ar: 4 / 5; }
+  .card:nth-child(4n + 3) { grid-column: 1 / 11; }
+  .intro__media { grid-column: 1 / 7; }
+  .intro__text { grid-column: 7 / 13; }
+  .cta__title, .cta__side { grid-column: 1 / 13; }
+  .footer__inner > :first-child { grid-column: 1 / 7; }
+  .footer__links { grid-column: 7 / 13; }
+  .footer__end { grid-column: 1 / 13; text-align: left; }
+  .p-intro__meta { grid-column: 1 / 13; grid-template-columns: repeat(3, auto); justify-content: start; gap: 2.5rem; }
+  .p-intro__desc { grid-column: 1 / 11; }
+  .g-row--pair .g-fig:first-child { grid-column: 1 / 7; }
+  .g-row--pair .g-fig:last-child { grid-column: 7 / 13; }
+  .g-row--inset .g-fig, .g-row--inset.is-flip .g-fig { grid-column: 1 / 13; }
+  .g-row--solo .g-fig { grid-column: 3 / 11; }
+  .about__media { grid-column: 1 / 13; position: static; aspect-ratio: 4 / 3.4; margin-bottom: 2.5rem; }
+  .about__text { grid-column: 1 / 13; }
+  .contact__info, .contact__form { grid-column: 1 / 13; }
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  :root { --header-h: 60px; }
+
+  .menu-btn { display: block; position: relative; z-index: 60; width: 44px; height: 44px; margin-right: -10px; }
+  .menu-btn__bars, .menu-btn__bars::before {
+    content: ''; position: absolute; left: 11px; right: 11px; height: 1px; background: currentColor;
+    transition: transform 0.4s var(--ease), top 0.4s var(--ease);
+  }
+  .menu-btn__bars { top: 19px; }
+  .menu-btn__bars::before { left: 0; right: 0; top: 7px; }
+  .menu-btn.is-open .menu-btn__bars { top: 22px; transform: rotate(45deg); }
+  .menu-btn.is-open .menu-btn__bars::before { top: 0; transform: rotate(-90deg); }
+
+  .nav {
+    position: fixed; inset: 0; z-index: 55; background: var(--bg);
+    flex-direction: column; justify-content: center; gap: 1.2rem; padding: 0 var(--gutter);
+    visibility: hidden; opacity: 0; transition: opacity 0.4s var(--ease), visibility 0.4s;
+  }
+  .nav.is-open { visibility: visible; opacity: 1; }
+  .nav__link { font-family: var(--serif); font-size: 3.4rem; font-weight: 300; letter-spacing: -0.02em; text-transform: none; line-height: 1.1; width: fit-content; }
+  .header__inner { position: relative; z-index: 60; }
+
+  .hero__top { padding-top: 24px; }
+  .hero__title { font-size: clamp(2.7rem, 13.5vw, 4.5rem); }
+  .hero__lede { grid-column: 1 / 13; }
+  .hero__media { min-height: 52vh; }
+  .hero__scroll i { height: 32px; }
+
+  .card:nth-child(n) { grid-column: 1 / 13; --ar: 4 / 5; }
+  .card:nth-child(4n + 1), .card:nth-child(4n + 4) { --ar: 3 / 2; }
+  .card:nth-child(4n + 2) { grid-column: 3 / 13; }
+  .card:nth-child(4n + 3) { grid-column: 1 / 11; }
+
+  .intro__media, .intro__text { grid-column: 1 / 13; }
+  .intro__text { margin-top: 2.5rem; }
+
+  .p-intro__meta { grid-template-columns: 1fr 1fr; gap: 1.5rem 2rem; }
+  .p-intro__desc { grid-column: 1 / 13; }
+  .p-cover { aspect-ratio: 4 / 3; }
+
+  .g-row--pair .g-fig:last-child { margin-top: 36px; }
+  .g-row--mixed { grid-template-columns: 1fr; row-gap: 24px; }
+  .g-row--mixed .g-fig:nth-child(n), .g-row--mixed.is-flip .g-fig:nth-child(n) { grid-column: 1 / -1; grid-row: auto; }
+  .g-row--mixed .g-fig:first-child { width: 78%; }
+  .g-row--mixed.is-flip .g-fig:first-child { margin-left: auto; }
+  .g-row--solo .g-fig { grid-column: 1 / 13; }
+
+  .lightbox__stage { inset: 56px 0 60px; padding-inline: 8px; }
+  .lightbox__nav { top: auto; bottom: 4px; margin-top: 0; }
+  .lightbox__prev { left: var(--gutter); }
+  .lightbox__next { right: var(--gutter); }
+
+  .p-nav { grid-template-columns: 1fr 1fr; row-gap: 1.5rem; }
+  .p-nav__all { grid-column: 1 / -1; grid-row: 2; justify-self: start; }
+  .approach__cols { grid-template-columns: 1fr; gap: 2.2rem; }
+  .field-row { grid-template-columns: 1fr; }
+  .btn { width: 100%; }
+  .cta__side .btn { width: auto; }
+}

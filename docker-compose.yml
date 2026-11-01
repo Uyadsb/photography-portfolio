@@ -1,0 +1,29 @@
+# Local development and testing. Requires Docker Desktop (or Docker Engine + Compose v2).
+#
+#   docker compose up --build          -> live dev server with hot reload:  http://localhost:5173
+#   docker compose --profile preview up --build preview
+#                                      -> production build served under a repo subpath,
+#                                         exactly like GitHub Pages:        http://localhost:4173/<REPO_NAME>/
+services:
+  dev:
+    build: .
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app                 # your files: edit on your PC, changes appear instantly
+      - /app/node_modules      # keep the container's own dependencies
+    environment:
+      # Makes file watching work on Windows/macOS Docker volumes
+      - CHOKIDAR_USEPOLLING=true
+    command: npm run dev
+
+  preview:
+    profiles: ["preview"]      # only starts when you ask for it
+    build: .
+    ports:
+      - "4173:4173"
+    environment:
+      - REPO_NAME=${REPO_NAME:-my-repo}   # set to your real GitHub repository name
+    command: >
+      sh -c "VITE_BASE=/$${REPO_NAME}/ npm run build &&
+             npx vite preview --host 0.0.0.0 --port 4173"
